@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http; // Import the http package
 
 class SignUpMethod extends StatefulWidget {
@@ -27,7 +28,7 @@ class _SignUpMethodState extends State<SignUpMethod> {
     String mobile = mobileController.text;
 
     // API endpoint
-    String apiUrl = 'http://10.0.2.2:8000/user/signup';
+    String apiUrl = 'https://user-management-backend-7oqi.onrender.com/user/signup';
     print(apiUrl);
 
     try {

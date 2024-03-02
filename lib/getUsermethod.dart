@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 
 class GetUserMethod extends StatefulWidget {
@@ -19,7 +20,7 @@ class _GetUserMethodState extends State<GetUserMethod> {
   }
 
   Future<void> getUser(String mobile) async {
-    String apiUrl = 'http://10.0.2.2:8000/user/$mobile';
+    String apiUrl = 'https://user-management-backend-7oqi.onrender.com/user/$mobile';
 
     try {
       var response = await http.get(Uri.parse(apiUrl));
@@ -75,122 +76,142 @@ class _GetUserMethodState extends State<GetUserMethod> {
                 ),
                 SizedBox(height: 16.0),
                 if (userData != null)
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Container(
-                        padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
-                        margin: EdgeInsets.only(bottom: 12.0),
-                        decoration: BoxDecoration(
-                          color: Colors.teal.withOpacity(0.1),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              'First Name:',
-                              style: TextStyle(
-                                fontSize: 14.0,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.teal,
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    padding:EdgeInsets.symmetric(horizontal: 8),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Container(
+                          padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
+                          margin: EdgeInsets.only(bottom: 12.0),
+                          decoration: BoxDecoration(
+                            color: Colors.teal.withOpacity(0.1),
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Center(
+                                child: Text(
+                                  'First Name:',
+                                  style: TextStyle(
+                                    fontSize: 14.0,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.teal,
+                                  ),
+                                ),
                               ),
-                            ),
-                            Text(
-                              '${userData!['firstName']}',
-                              style: TextStyle(
-                                fontSize: 18.0,
-                                color: Colors.black87,
+                              Center(
+                                child: Text(
+                                  '${userData!['firstName']}',
+                                  style: TextStyle(
+                                    fontSize: 18.0,
+                                    color: Colors.black87,
+                                  ),
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
-                        margin: EdgeInsets.only(bottom: 12.0),
-                        decoration: BoxDecoration(
-                          color: Colors.teal.withOpacity(0.1),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              'Last Name:',
-                              style: TextStyle(
-                                fontSize: 14.0,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.teal,
+                        Container(
+                          padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
+                          margin: EdgeInsets.only(bottom: 12.0),
+                          decoration: BoxDecoration(
+                            color: Colors.teal.withOpacity(0.1),
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Center(
+                                child: Text(
+                                  'Last Name:',
+                                  style: TextStyle(
+                                    fontSize: 14.0,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.teal,
+                                  ),
+                                ),
                               ),
-                            ),
-                            Text(
-                              '${userData!['lastName']}',
-                              style: TextStyle(
-                                fontSize: 18.0,
-                                color: Colors.black87,
+                              Center(
+                                child: Text(
+                                  '${userData!['lastName']}',
+                                  style: TextStyle(
+                                    fontSize: 18.0,
+                                    color: Colors.black87,
+                                  ),
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
-                        margin: EdgeInsets.only(bottom: 12.0),
-                        decoration: BoxDecoration(
-                          color: Colors.teal.withOpacity(0.1),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              'Email:',
-                              style: TextStyle(
-                                fontSize: 14.0,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.teal,
+                        Container(
+                          padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
+                          margin: EdgeInsets.only(bottom: 12.0),
+                          decoration: BoxDecoration(
+                            color: Colors.teal.withOpacity(0.1),
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Center(
+                                child: Text(
+                                  'Email:',
+                                  style: TextStyle(
+                                    fontSize: 14.0,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.teal,
+                                  ),
+                                ),
                               ),
-                            ),
-                            Text(
-                              '${userData!['email']}',
-                              style: TextStyle(
-                                fontSize: 18.0,
-                                color: Colors.black87,
+                              Center(
+                                child: Text(
+                                  '${userData!['email']}',
+                                  style: TextStyle(
+                                    fontSize: 18.0,
+                                    color: Colors.black87,
+                                  ),
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
-                        margin: EdgeInsets.only(bottom: 12.0),
-                        decoration: BoxDecoration(
-                          color: Colors.teal.withOpacity(0.1),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              'Mobile Number:',
-                              style: TextStyle(
-                                fontSize: 14.0,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.teal,
+                        Container(
+                          padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
+                          margin: EdgeInsets.only(bottom: 12.0),
+                          decoration: BoxDecoration(
+                            color: Colors.teal.withOpacity(0.1),
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Center(
+                                child: Text(
+                                  'Mobile Number:',
+                                  style: TextStyle(
+                                    fontSize: 14.0,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.teal,
+                                  ),
+                                ),
                               ),
-                            ),
-                            Text(
-                              '${userData!['mobile']}',
-                              style: TextStyle(
-                                fontSize: 18.0,
-                                color: Colors.black87,
+                              Center(
+                                child: Text(
+                                  '${userData!['mobile']}',
+                                  style: TextStyle(
+                                    fontSize: 18.0,
+                                    color: Colors.black87,
+                                  ),
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
 
               ],

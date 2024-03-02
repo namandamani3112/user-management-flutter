@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 
 class DeleteUserMethod extends StatefulWidget {
@@ -15,7 +16,7 @@ class _DeleteUserMethodState extends State<DeleteUserMethod> {
     ));
   }
   Future<void> deleteUser(String mobile) async {
-    String apiUrl = 'http://10.0.2.2:8000/user/$mobile';
+    String apiUrl = 'https://user-management-backend-7oqi.onrender.com/user/$mobile';
 
     try {
       var response = await http.delete(Uri.parse(apiUrl));
