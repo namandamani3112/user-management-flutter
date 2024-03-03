@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:testnode/getAllUsersmethod.dart';
 import 'signupmethod.dart';
 import 'getusermethod.dart';
 import 'deleteusermethod.dart';
@@ -33,6 +34,8 @@ class MyApp extends StatelessWidget {
         '/getuser': (context) => GetUserMethod(),
         '/deleteuser': (context) => DeleteUserMethod(),
         '/updateuser': (context) => UpdateUserMethod(),
+        '/all': (context) => GetAllUsersList(),
+
       },
     );
   }
@@ -88,6 +91,13 @@ class HomeScreen extends StatelessWidget {
                     Navigator.pushNamed(context, '/deleteuser');
                   },
                   child: Text('Delete User'),
+                ),
+                SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/all');
+                  },
+                  child: Text('Get All User'),
                 ),
               ],
             ),

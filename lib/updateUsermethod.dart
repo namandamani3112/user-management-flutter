@@ -22,7 +22,7 @@ class _UpdateUserMethodState extends State<UpdateUserMethod> {
   }
 
   Future<void> updateUser(String mobile, String firstName, String lastName, String email, String phone) async {
-    String apiUrl = 'https://user-management-backend-7oqi.onrender.com/user/$mobile';
+    String apiUrl = 'https://user-management-backend-7oqi.onrender.com  /user/$mobile';
 
     Map<String, String> body = {};
 
